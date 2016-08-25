@@ -98,23 +98,21 @@ public class TipoDocuCtrl {
         return resp;
     }
 
-    public boolean elimin(Long empId)
+    public boolean elimin(TipoDocu obje)
     {
         boolean resp = false;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("POOPU");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-        TipoDocu respo = null;
-        try{
-            respo = em.find(TipoDocu.class, empId);
-            if(respo != null)
-            {
-                em.remove(respo);
-                tx.commit();
-                resp = true; 
-            }
-        }catch(Exception e){
+        try
+        {
+            em.merge(obje);
+            tx.commit();
+            resp = true;
+        }
+        catch(Exception ex)
+        {
             tx.rollback();
         }
         em.close();

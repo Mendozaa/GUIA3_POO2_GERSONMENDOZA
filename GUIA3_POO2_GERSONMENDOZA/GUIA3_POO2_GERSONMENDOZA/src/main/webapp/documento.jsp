@@ -45,7 +45,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Personas
+                            TIPO DOCUMENTO
                             <small>Mantenimiento</small>
                         </h1>
                         <h1>${mensAler}</h1>
